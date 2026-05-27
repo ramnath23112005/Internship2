@@ -7,6 +7,7 @@ const env = require('./config/env');
 const errorHandler = require('./middleware/errorHandler');
 const { setIO } = require('./socket');
 
+const seedData = require('./seed');
 const authRoutes = require('./routes/auth');
 const campaignRoutes = require('./routes/campaigns');
 const donationRoutes = require('./routes/donations');
@@ -55,6 +56,15 @@ app.use('/api/ai', aiRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+app.post('/api/seed', async (req, res) => {
+  try {
+    const result = await seedData();
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 app.use(errorHandler);
