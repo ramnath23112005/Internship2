@@ -217,6 +217,18 @@ The app will be available at `http://localhost:3000`.
 
 ---
 
+## Login Credentials (Seeded Users)
+
+After running the database seeder (`node backend/seed.js`), the following test accounts are available:
+
+| Name | Email | Password | Role |
+|------|-------|----------|------|
+| Alice Volunteer | alice@test.com | password123 | volunteer |
+| Bob NGO Admin | bob@test.com | password123 | ngo_admin |
+| Charlie Super Admin | charlie@test.com | password123 | super_admin |
+
+---
+
 ## API Endpoints
 
 ### Authentication
